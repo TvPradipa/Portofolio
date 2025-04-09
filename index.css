@@ -1,0 +1,733 @@
+/* ===== CSS RESET & ROOT VARIABLES ===== */
+:root {
+  /* Color palette */
+  --primary: #ffffff; /* White for text */
+  --secondary: #0a192f; /* Dark navy */
+  --accent: #64ffda; /* Teal accent */
+  --dark-accent: #52d4b9; /* Darker teal */
+  --text-light: #ffffff;
+  --gray: #8892b0;
+  --teal: #64ffda;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Common values */
+  --border-accent: 1px solid rgba(100, 255, 218, 0.1);
+  --card-bg: rgba(10, 25, 47, 0.7);
+  --accent-bg-light: rgba(100, 255, 218, 0.1);
+  --accent-bg-medium: rgba(100, 255, 218, 0.2);
+  --accent-bg-subtle: rgba(100, 255, 218, 0.05);
+}
+
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+html {
+  overflow-x: hidden;
+}
+/* ===== PARTICLES BACKGROUND ===== */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background-color: var(--secondary);
+  pointer-events: none;
+}
+
+canvas.particles-js-canvas-el {
+  position: absolute;
+  pointer-events: auto !important;
+}
+
+/* ===== CONTENT STRUCTURE ===== */
+.content-wrapper {
+  position: relative;
+  z-index: 1; /* Above particles */
+  pointer-events: none;
+}
+
+/* Element pointer events control */
+header,
+section,
+.photo,
+.custom-icon {
+  pointer-events: auto;
+}
+
+/* Interactive elements pointer events */
+header a,
+.custom-icon a,
+.photo,
+button {
+  pointer-events: auto;
+}
+
+/* ===== HEADER STYLES ===== */
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.5rem 10%;
+  background-color: rgba(10, 25, 47, 0.8);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow);
+  border-bottom: var(--border-accent);
+}
+
+header.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+header a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+header a:hover {
+  color: var(--accent);
+  background-color: var(--accent-bg-light);
+}
+
+/* ===== MAIN SECTION STYLES ===== */
+#main {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 80px;
+  background-color: transparent;
+}
+
+.index {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10%;
+  background-color: transparent;
+}
+
+/* Text styles */
+.text-1 {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.text-2 {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: 3px;
+}
+
+.text-3 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -1px;
+}
+
+/* ===== PHOTO STYLES ===== */
+.photo {
+  position: absolute;
+  right: 15%;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 8px solid rgba(100, 255, 218, 0.2);
+  box-shadow: var(--shadow);
+  z-index: 1;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: grayscale(20%) contrast(110%);
+}
+
+.photo:hover img {
+  transform: scale(1.05);
+  filter: grayscale(0%) contrast(120%);
+}
+
+.certificate-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border: var(--border-accent);
+}
+
+/* ===== CUSTOM ICON STYLES ===== */
+.custom-icon {
+  position: absolute;
+  left: 18%;
+  bottom: 10%;
+  width: 250px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: var(--accent-bg-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--accent);
+}
+
+.custom-icon:hover {
+  background-color: var(--accent-bg-medium);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.custom-icon svg {
+  width: 180px;
+  height: 25px;
+}
+
+.custom-icon svg path {
+  fill: var(--accent);
+}
+
+/* ===== SECTION COMMON STYLES ===== */
+section {
+  min-height: 100vh;
+  width: 100%;
+  padding: 6rem 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background-color: transparent;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent);
+}
+
+/* Common section container styles */
+.homeMe,
+.aboutMe,
+.educationMe,
+.experienceMe {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  border: var(--border-accent);
+}
+
+.homeMe p,
+.aboutMe h1,
+.aboutMe p,
+.educationMe h1,
+.educationMe p,
+.experienceMe h1 {
+  color: var(--primary);
+}
+
+/* ===== EDUCATION SECTION STYLES ===== */
+#education,
+#about,
+#experience,
+#home {
+  min-width: 100vh;
+  padding: 8rem 10% 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.educationMe,
+.aboutMe,
+.experienceMe {
+  text-align: center;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.homeMe {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.educationMe h1,
+.aboutMe h1,
+.experienceMe h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+.homeMe p:first-child {
+  font-size: 1.2rem;
+  color: var(--teal);
+  margin-bottom: 1rem;
+  font-family: "SF mono", "Fira Code", monospace;
+}
+.homeMe .text-4 {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: var(--gray);
+  margin: 0 auto 2rem;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+.education-container,
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.education-card {
+  background-color: var(--accent-bg-subtle);
+  padding: 2rem;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  border: var(--border-accent);
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+.about-card {
+  background-color: var(--accent-bg-subtle);
+  padding: 2rem;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  border: var(--border-accent);
+  width: 100%;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.education-card:hover,
+.about-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.education-card h2 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.education-card h3 {
+  color: var(--accent);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.education-card p,
+.about-card p {
+  color: var(--primary);
+  font-size: 1rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.education-details {
+  margin-top: 1.5rem;
+}
+
+.education-details i {
+  margin-right: 0.5rem;
+  color: var(--accent);
+}
+
+.aboutMe p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background: transparent;
+  color: var(--teal);
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--teal);
+  border-radius: 4px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  font-family: "SF mono", "Fira Code", monospace;
+}
+.cta-button:hover {
+  background: rgba(100, 255, 218, 0.1);
+  transform: translateY(-3px);
+}
+/* ===== PROJECTS SECTION STYLES ===== */
+#projects {
+  min-width: 100vh;
+  padding: 8rem 10% 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projectsMe {
+  text-align: center;
+  margin-bottom: 4rem;
+  width: 100%;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  border: var(--border-accent);
+}
+
+.projectsMe h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.project-card {
+  background-color: var(--accent-bg-subtle);
+  padding: 2rem;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  border: var(--border-accent);
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.project-card h2 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.project-card p {
+  color: var(--primary);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.project-card a:hover {
+  color: var(--text-light);
+  text-decoration: underline;
+}
+
+/* ===== CONTACT SECTION STYLES ===== */
+#contact {
+  min-width: 100vh;
+  padding: 8rem 10% 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contactMe {
+  text-align: center;
+  margin-bottom: 4rem;
+  width: 100%;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  border: var(--border-accent);
+}
+
+.contactMe h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.contact-card {
+  background-color: var(--accent-bg-subtle);
+  padding: 2rem;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  border: var(--border-accent);
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.contact-container p {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+/* EXPERIENCE SECTION - SAMA PERSIS DENGAN SECTION LAINNYA */
+#experience {
+  min-width: 100vh;
+  padding: 8rem 10% 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.experienceMe {
+  text-align: center;
+  margin-bottom: 4rem;
+  width: 100%;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  border: var(--border-accent);
+}
+
+.experienceMe h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+}
+
+.experience-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.experience-card {
+  background-color: var(--accent-bg-subtle);
+  padding: 2rem;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  border: var(--border-accent);
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.experience-card h2 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.experience-card p {
+  color: var(--primary);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+/* Gaya yang ditingkatkan untuk sertifikat */
+.certificate-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.certificate-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.certificate-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: filter 0.3s ease;
+}
+
+.certificate-img:hover {
+  filter: brightness(1.05);
+}
+
+/* Tambahan untuk loading state */
+.certificate-wrapper::before {
+  content: "Loading...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.certificate-img:not([src]) + .certificate-wrapper::before,
+.certificate-img[src=""] + .certificate-wrapper::before {
+  opacity: 1;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 992px) {
+  .photo {
+    width: 280px;
+    height: 280px;
+    right: 5%;
+  }
+
+  .text-1 {
+    font-size: 4rem;
+  }
+
+  .text-2 {
+    font-size: 1.5rem;
+  }
+
+  .text-3 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #home {
+    padding-top: 200px;
+  }
+  header {
+    padding: 1rem 5%;
+    justify-content: space-between;
+  }
+
+  .photo {
+    position: relative;
+    right: auto;
+    margin: 2rem auto;
+  }
+
+  .index {
+    text-align: center;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .custom-icon {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin: 2rem auto;
+  }
+
+  .text-1,
+  .text-2,
+  .text-3 {
+    position: static;
+    padding: 0;
+    text-align: center;
+  }
+
+  .homeMe,
+  .aboutMe,
+  .educationMe,
+  .experienceMe {
+    padding: 1.5rem;
+  }
+}
